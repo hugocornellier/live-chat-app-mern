@@ -1,11 +1,37 @@
 const http = require("http")
 const express = require("express")
 const socketIO = require("socket.io")
+const fetch = require('cross-fetch')
 const app = express()
 const path = require('path')
 const server = http.createServer(app)
 const io = socketIO(server)
 const users = [{}];
+const parser = require('node-html-parser');
+
+(async () => {
+  try {
+    const res = await fetch('https://mkwrs.com/mk8/display.php?track=Mario+Kart+Stadium')
+    const html = await res.text()
+    if (res.status >= 400) {
+      throw new Error("Bad response from server")
+    }
+    const table = parser.parse(html).querySelectorAll('table')
+    for (var row of table[2].querySelectorAll('tr')) {
+      const row_data = []
+      for (var cell of row.textContent.match('\n')['input'].split('\n')) {
+        cell_data = String(cell).trim()
+        if (cell_data.length > 0) {
+          row_data.push(cell_data)
+        }
+      }
+      console.log(row_data)
+      console.log("Date: " + row_data[0])
+    }
+  } catch (err) {
+    console.error(err);
+  }
+})()
 
 app.use(express.static(path.join(__dirname, "../frontend/build")))
 app.get("*", (req, res) => {
