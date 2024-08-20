@@ -1,4 +1,6 @@
-# Secure Real-Time Chat Web App
+# Secure Real-Time Chat (Web App)
+
+This is a web application that enables users to communicate with one another in real-time. The backend handles concurrent connections using Socket.io.
 
 ![Demo](https://i.imgur.com/mNnZPQG.png)
 
