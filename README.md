@@ -1,6 +1,6 @@
 # Chat App - TypeScript + React + Socket.io
 
-![Demo](./demo.png)
+![Demo](https://i.imgur.com/mNnZPQG.png)
 
 ## Get Started
 
