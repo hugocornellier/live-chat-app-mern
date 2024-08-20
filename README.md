@@ -1,4 +1,4 @@
-# Chat App - TypeScript + React + Socket.io
+# Secure Real-Time Chat Web App
 
 ![Demo](https://i.imgur.com/mNnZPQG.png)
 
